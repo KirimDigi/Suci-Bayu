@@ -1,0 +1,187 @@
+.pp-image-accordion {
+  display: flex;
+  height: 50vh;
+}
+.pp-image-accordion .pp-image-accordion-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -o-object-fit: cover;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.pp-image-accordion .pp-image-accordion-button-wrap * {
+  transition: none;
+}
+.pp-image-accordion .pp-image-accordion-button {
+  transition: all 0.25s linear 0s;
+}
+.pp-image-accordion-item {
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  position: relative;
+  flex: 1;
+  text-decoration: none;
+  transition: flex 0.4s;
+  overflow: hidden;
+}
+.pp-image-accordion-item:last-child {
+  margin-right: 0 !important;
+}
+.pp-image-accordion-active {
+  cursor: default;
+}
+.pp-icon {
+  display: inline-block;
+  line-height: 1;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.pp-icon i,
+.pp-icon svg {
+  width: 1em;
+  height: 1em;
+  position: relative;
+  display: block;
+}
+.pp-image-accordion-overlay {
+  background-color: rgb(0 0 0 / 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: background-color 0.4s;
+}
+.pp-image-accordion-overlay .pp-image-accordion-content-wrap {
+  z-index: 1;
+}
+.pp-image-accordion-content-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  visibility: hidden;
+}
+.pp-image-accordion-content-wrap p:last-child {
+  margin-bottom: 0;
+}
+.pp-image-accordion-content-wrap * {
+  visibility: hidden;
+  opacity: 0;
+  transform-style: preserve-3d;
+}
+.pp-image-accordion-title {
+  color: #fff;
+  transform: translate3d(0, -60px, 0);
+}
+.pp-image-accordion-description {
+  color: #fff;
+  transform: translate3d(0, 60px, 0);
+}
+.pp-image-accordion-button-wrap {
+  transform: translate3d(0, 60px, 0);
+}
+.pp-image-accordion-content-active {
+  visibility: visible;
+}
+.pp-image-accordion-content-active * {
+  opacity: 1;
+  visibility: visible;
+  transform: none !important;
+  transition: all 0.3s 0.3s;
+}
+.pp-image-accordion-on-hover .pp-image-accordion-item:hover {
+  flex: 3;
+}
+.pp-image-accordion-on-hover
+  .pp-image-accordion-item:hover
+  .pp-image-accordion-content-wrap
+  * {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: all 0.3s 0.3s;
+}
+.pp-image-accordion-orientation-horizontal .pp-image-accordion {
+  flex-direction: column;
+}
+.pp-image-accordion-orientation-horizontal
+  .pp-image-accordion
+  a:hover
+  .pp-image-accordion-overlay {
+  background-color: #fff0;
+}
+.pp-image-accordion-orientation-horizontal .pp-image-accordion-item {
+  margin-right: 0 !important;
+}
+.pp-advanced-accordion {
+  width: auto;
+  height: auto;
+  transition: all 0.3s ease-in-out;
+}
+.pp-advanced-accordion .eltemplate-faq-tab-title {
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  outline: 0;
+}
+.pp-advanced-accordion.pp-toggle-icon-align-left .eltemplate-faq-tab-title {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.eltemplate-faq-toggle-icon {
+  display: inline-flex;
+  transition: none;
+  z-index: 10;
+}
+.eltemplate-faq-toggle-icon-open,
+.eltemplate-faq-tab-show .eltemplate-faq-toggle-icon-close,
+.eltemplate-faq-tab-active-default .eltemplate-faq-toggle-icon-close {
+  display: none;
+}
+.eltemplate-faq-tab-show .eltemplate-faq-toggle-icon-open,
+.eltemplate-faq-tab-active-default .eltemplate-faq-toggle-icon-open {
+  display: inline-block;
+}
+.eltemplate-faq-tab-content {
+  display: none;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.eltemplate-faq-tab-content p:last-child {
+  margin: 0;
+}
+.eltemplate-faq-tab-content.eltemplate-faq-tab-active {
+  display: block;
+}
+.eltemplate-faq-item {
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.eltemplate-faq-title-icon {
+  display: flex;
+  align-items: center;
+}
+.eltemplate-faq-tab-icon {
+  display: inline-block;
+  margin-right: 10px;
+}

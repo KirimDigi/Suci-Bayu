@@ -1,0 +1,172 @@
+div[class^="eltemplate-"],
+div[class*=" eltemplate-"] {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.clearfix:after {
+  clear: both;
+  content: "";
+  font-size: 0;
+  height: 0;
+  display: block;
+  visibility: hidden;
+}
+
+.eltemplate-countdown-wrapper {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  text-align: center;
+  /* Circle layout */
+  /* Square layout */
+}
+.eltemplate-countdown-wrapper .eltemplate-countdown-item {
+  display: inline-block;
+  margin-bottom: 15px;
+  position: relative;
+}
+.eltemplate-countdown-wrapper
+  .eltemplate-countdown-item
+  .eltemplate-countdown-label,
+.eltemplate-countdown-wrapper
+  .eltemplate-countdown-item
+  .eltemplate-countdown-digit {
+  padding: 0;
+  margin: 0;
+}
+.eltemplate-countdown-wrapper .eltemplate-countdown-digit-wrapper,
+.eltemplate-countdown-wrapper .eltemplate-countdown-label-wrapper {
+  text-align: center;
+  position: relative;
+}
+.eltemplate-countdown-wrapper.eltemplate-countdown-separator-line
+  .eltemplate-countdown-item,
+.eltemplate-countdown-wrapper.eltemplate-countdown-separator-colon
+  .eltemplate-countdown-item {
+  position: relative;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+.eltemplate-countdown-wrapper.eltemplate-countdown-separator-colon
+  .eltemplate-countdown-item
+  .eltemplate-countdown-digit-wrapper:after {
+  content: ":";
+  display: inline-block;
+  font-size: 30px;
+  position: absolute;
+  right: -5px;
+  top: 45%;
+  z-index: 10;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.eltemplate-countdown-wrapper.eltemplate-countdown-separator-colon
+  .eltemplate-countdown-item:last-child
+  .eltemplate-countdown-digit-wrapper:after {
+  content: none;
+}
+.eltemplate-countdown-wrapper.eltemplate-countdown-separator-line
+  .eltemplate-countdown-item:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  border-right: 1px solid #ccc;
+}
+.eltemplate-countdown-wrapper.eltemplate-countdown-separator-line
+  .eltemplate-countdown-item:last-child:after {
+  content: none;
+}
+.eltemplate-countdown-wrapper.eltemplate-countdown-style-circle
+  .eltemplate-countdown-item
+  .eltemplate-countdown-digit-wrapper {
+  border-radius: 50%;
+  background: #333;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.eltemplate-countdown-wrapper.eltemplate-countdown-style-circle
+  .eltemplate-countdown-item
+  .eltemplate-countdown-digit {
+  color: #fff;
+}
+.eltemplate-countdown-wrapper.eltemplate-countdown-style-circle.eltemplate-countdown-label-pos-out_left
+  .eltemplate-countdown-item,
+.eltemplate-countdown-wrapper.eltemplate-countdown-style-circle.eltemplate-countdown-label-pos-out_right
+  .eltemplate-countdown-item {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  direction: ltr;
+}
+.eltemplate-countdown-wrapper.eltemplate-countdown-style-circle.eltemplate-countdown-label-pos-out_right
+  .eltemplate-countdown-item {
+  direction: rtl;
+}
+.eltemplate-countdown-wrapper.eltemplate-countdown-style-square
+  .eltemplate-countdown-item
+  .eltemplate-countdown-digit-wrapper {
+  background: #333;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  box-pack: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  box-align: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-orient: vertical;
+  box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.eltemplate-countdown-wrapper.eltemplate-countdown-style-square
+  .eltemplate-countdown-item
+  .eltemplate-countdown-digit {
+  color: #fff;
+}
+.eltemplate-countdown-wrapper.eltemplate-countdown-style-square.eltemplate-countdown-label-pos-out_left
+  .eltemplate-countdown-item,
+.eltemplate-countdown-wrapper.eltemplate-countdown-style-square.eltemplate-countdown-label-pos-out_right
+  .eltemplate-countdown-item {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  direction: ltr;
+}
+.eltemplate-countdown-wrapper.eltemplate-countdown-style-square.eltemplate-countdown-label-pos-out_right
+  .eltemplate-countdown-item {
+  direction: rtl;
+}
+
+/* Countdown Media Queries */

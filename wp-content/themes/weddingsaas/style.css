@@ -1,0 +1,2316 @@
+﻿/*
+ Theme Name:   Weddingsaas Thema Child
+ Description:  Child theme for Kekondangan Premium — Sultan Edition
+ Author:       cobakekiri
+ Template:     hello-elementor
+ Version:      2.6.3
+ Text Domain:  thema-child
+ */
+
+/* ============================================================
+   0. GOOGLE FONTS
+   ============================================================ */
+@import url('../../../css2');
+
+/* ============================================================
+   1. BRAND DESIGN TOKENS
+   ============================================================ */
+:root {
+    /* === ANTIGRAVITY DESIGN TOKENS (Dashboard 2026) === */
+    /* Primary Colors */
+    --brand-dark:      #262F2E; /* Primary Dark */
+    --brand-muted:     #384040; /* Surface Dark */
+    --brand-gold:      #FCC374; /* Accent Gold */
+    --brand-gold-deep: #F5D39B; /* Soft Gold Hover */
+    --brand-gold-soft: rgba(252, 195, 116, 0.12);
+    --brand-gold-glow: rgba(252, 195, 116, 0.18);
+
+    /* === LIGHT MODE SURFACES === */
+    --bg:              #F7F9F8; /* Light Background */
+    --surface:         #FFFFFF; /* Pure White */
+    --surface-2:       #FFFFFF; /* Sidebar */
+    --surface-3:       #FDFDFD; /* Elevated Card */
+    --border:          #E8ECEB; /* Border Light */
+    --border-light:    #F7F9F8;
+
+    /* === LIGHT MODE TEXT === */
+    --text-primary:    #1D2423; /* Primary Text */
+    --text-secondary:  #5F6968; /* Secondary Text */
+    --text-muted:      #97A09F; /* Muted Text */
+    --text-faint:      #adb5bd;
+
+    /* === SIDEBAR === */
+    --sidebar-bg:      #FFFFFF;
+    --sidebar-border:  #E8ECEB;
+
+    /* === SHADOWS === */
+    --shadow-xs:  0 1px 2px rgba(38, 47, 46, 0.02);
+    --shadow-sm:  0 2px 8px rgba(38, 47, 46, 0.04);
+    --shadow-md:  0 4px 20px rgba(0, 0, 0, 0.04);
+    --shadow-lg:  0 10px 30px rgba(0, 0, 0, 0.06);
+    --shadow-gold: 0 4px 16px rgba(252, 195, 116, 0.15);
+
+    /* === RADIUS === */
+    --r-sm:  10px; /* Small */
+    --r-md:  16px; /* Medium */
+    --r-lg:  24px; /* Card */
+    --r-xl:  28px; /* Modal */
+    --r-btn: 14px; /* Button */
+
+    /* === TRANSITION === */
+    --t: 0.22s ease;
+}
+
+/* ============================================================
+   DARK MODE TOKENS (Antigravity Cinematic)
+   ============================================================ */
+[data-bs-theme="dark"] {
+    /* Surfaces */
+    --bg:              #1F2625; /* Main Background */
+    --sidebar-bg:      #262F2E; /* Sidebar */
+    --surface:         #2B3433; /* Card Utama */
+    --surface-2:       #262F2E; 
+    --surface-3:       #384040; /* Elevated Card */
+    --border:          rgba(255, 255, 255, 0.05); /* Subtle Border */
+    --border-light:    rgba(255, 255, 255, 0.02);
+
+    /* Text */
+    --text-primary:    #FFFFFF;
+    --text-secondary:  rgba(255, 255, 255, 0.72);
+    --text-muted:      rgba(255, 255, 255, 0.42);
+    --text-faint:      rgba(255, 255, 255, 0.2);
+
+    /* Sidebar */
+    --sidebar-border:  rgba(255, 255, 255, 0.05);
+
+    /* Shadows */
+    --shadow-xs:  0 1px 2px rgba(0, 0, 0, 0.1);
+    --shadow-sm:  0 2px 8px rgba(0, 0, 0, 0.15);
+    --shadow-md:  0 10px 30px rgba(0, 0, 0, 0.22); /* Shadow from brief */
+    --shadow-lg:  0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Header Background (Always Dark as requested) */
+#kt_app_header, #kt_header, .header {
+    background-color: #262f2e !important;
+}
+
+/* ============================================================
+   2. BASE RESET
+   ============================================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    background-color: var(--bg) !important;
+    color: var(--text-primary) !important;
+    transition: background-color var(--t), color var(--t);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base card */
+.card {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--r-lg) !important; /* Large Card Radius (24px) */
+    box-shadow: var(--shadow-md) !important; /* Antigravity Shadow */
+    transition: transform var(--t), box-shadow var(--t);
+}
+.card:hover {
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   3. TOPBAR (Header)
+   ============================================================ */
+#kt_header, 
+#kt_header .container-fluid, 
+#kt_header .header-brand,
+#kt_app_header,
+#kt_app_header .container-fluid {
+    background-color: #262f2e !important; /* Always Dark as requested */
+    border: none !important;
+}
+
+#kt_header {
+    border-bottom: none !important;
+    box-shadow: none !important;
+    height: 72px !important; /* Height from brief */
+}
+
+/* Menghilangkan border pada elemen di bawah header atau alternatif class */
+.app-header, .header, #kt_toolbar, #kt_content {
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+/* Custom Buttons for Invitation List */
+.btn-invitation-open {
+    background-color: #1d2423 !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+.btn-invitation-open:hover {
+    background-color: #2b3433 !important;
+}
+
+.btn-invitation-edit {
+    background-color: #3c4a45 !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+.btn-invitation-edit:hover {
+    background-color: #4a5c55 !important;
+}
+
+.btn-invitation-share {
+    background-color: #ffbe76 !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+.btn-invitation-share:hover {
+    background-color: #ffa843 !important;
+}
+
+/* Header text adjustments for dark background */
+#kt_header .text-white,
+#kt_header span.text-white {
+    color: #ffffff !important;
+}
+
+#kt_header .text-muted,
+#kt_header .fs-8 {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Logo teks */
+#kt_header span.fs-3qx,
+#kt_header span.fs-1.fw-bold {
+    color: #ffffff !important;
+}
+
+/* User name */
+#kt_header .lh-1.mb-1 {
+    color: #ffffff !important;
+}
+
+/* User email */
+#kt_header .lh-1:not(.mb-1) {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+}
+
+/* Icon buttons topbar — hanya di header bar langsung */
+#kt_header .btn-icon:not(.menu-sub-dropdown .btn-icon) > i,
+#kt_header .btn-icon:not(.menu-sub-dropdown .btn-icon) > i span {
+    color: var(--brand-gold) !important;
+    transition: color var(--t) !important;
+}
+
+#kt_header .btn-icon:hover {
+    background-color: rgba(255,255,255,0.08) !important;
+    border-radius: var(--r-sm) !important;
+}
+
+/* Dark/light toggle — hanya di header bar, BUKAN di dropdown */
+#kt_header > .container-fluid .ki-night-day,
+#kt_header > .container-fluid .ki-moon,
+#kt_header > .d-flex .ki-night-day,
+#kt_header > .d-flex .ki-moon {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+/* User menu trigger */
+#kt_header_user_menu_toggle .btn-flex {
+    border-radius: var(--r-md) !important;
+    transition: background-color var(--t) !important;
+}
+
+#kt_header_user_menu_toggle .btn-flex:hover {
+    background-color: rgba(255,255,255,0.08) !important;
+}
+
+/* Badge user group */
+.badge-light-success {
+    background-color: var(--brand-gold-soft) !important;
+    color: var(--brand-gold-deep) !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+}
+
+/* Hamburger mobile */
+#kt_header #kt_aside_toggle i {
+    color: #ffffff !important;
+}
+
+/* Dark mode — header tetap #262f2e */
+[data-bs-theme="dark"] #kt_header {
+    background-color: #1a1f1e !important;
+    border-bottom-color: rgba(255,255,255,0.05) !important;
+}
+
+/* ============================================================
+   HEADER DROPDOWN — reset warna agar selalu readable
+   (dropdown punya bg sendiri, tidak boleh inherit dari header gelap)
+   ============================================================ */
+
+/* Dropdown background & border */
+#kt_header .menu-sub-dropdown {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--r-md) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* Semua teks di dalam dropdown — RESET ke warna tema */
+#kt_header .menu-sub-dropdown .menu-link,
+#kt_header .menu-sub-dropdown .menu-title,
+#kt_header .menu-sub-dropdown .menu-item a,
+#kt_header .menu-sub-dropdown span {
+    color: var(--text-secondary) !important;
+}
+
+/* Hover state dropdown item */
+#kt_header .menu-sub-dropdown .menu-item .menu-link:hover {
+    background-color: var(--brand-gold-soft) !important;
+    color: var(--brand-dark) !important;
+}
+
+/* SEMUA icon di dalam dropdown — RESET ke warna muted */
+#kt_header .menu-sub-dropdown i,
+#kt_header .menu-sub-dropdown i span,
+#kt_header .menu-sub-dropdown .ki-duotone,
+#kt_header .menu-sub-dropdown .ki-outline,
+#kt_header .menu-sub-dropdown .ki-solid {
+    color: var(--text-secondary) !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+/* ki-duotone paths — pastiin path1 & path2 visible */
+#kt_header .menu-sub-dropdown .ki-duotone .path1,
+#kt_header .menu-sub-dropdown .ki-duotone .path2,
+#kt_header .menu-sub-dropdown .ki-duotone .path3 {
+    color: var(--text-secondary) !important;
+    opacity: 1 !important;
+}
+
+/* Active/selected item */
+#kt_header .menu-sub-dropdown .menu-item.active .menu-link,
+#kt_header .menu-sub-dropdown .menu-item.here .menu-link {
+    background-color: var(--brand-gold-soft) !important;
+    color: var(--brand-dark) !important;
+}
+
+#kt_header .menu-sub-dropdown .menu-item.active i,
+#kt_header .menu-sub-dropdown .menu-item.here i {
+    color: var(--brand-gold-deep) !important;
+}
+
+/* Dark mode dropdown tetap pakai surface gelap */
+[data-bs-theme="dark"] #kt_header .menu-sub-dropdown {
+    background-color: var(--surface) !important;
+    border-color: var(--border) !important;
+}
+
+[data-bs-theme="dark"] #kt_header .menu-sub-dropdown .menu-link,
+[data-bs-theme="dark"] #kt_header .menu-sub-dropdown span {
+    color: var(--text-secondary) !important;
+}
+
+[data-bs-theme="dark"] #kt_header .menu-sub-dropdown i,
+[data-bs-theme="dark"] #kt_header .menu-sub-dropdown i span {
+    color: var(--text-secondary) !important;
+}
+
+/* ============================================================
+   4. SIDEBAR
+   ============================================================ */
+#kt_aside,
+.aside.card {
+    background-color: var(--sidebar-bg) !important;
+    border: none !important;
+    border-right: 1px solid var(--sidebar-border) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Menu item padding */
+#kt_aside .menu,
+.aside .menu {
+    padding: 0 8px !important;
+}
+
+/* Menu link base */
+#kt_aside .menu-link,
+.aside .menu-link {
+    border-radius: 14px !important; /* Radius from brief */
+    padding: 12px 14px !important; /* Spacing */
+    margin: 4px 0 !important;
+    transition: all var(--t) !important;
+    position: relative !important;
+}
+
+#kt_aside .menu-link .menu-title,
+.aside .menu-link .menu-title {
+    color: #7A8382 !important; /* Inactive Menu color from brief */
+    font-weight: 500 !important;
+}
+
+#kt_aside .menu-link .menu-icon i,
+.aside .menu-link .menu-icon i {
+    color: #7A8382 !important;
+}
+
+/* === HOVER STATE === */
+#kt_aside .menu-link:hover:not(.active),
+.aside .menu-link:hover:not(.active) {
+    background-color: rgba(38, 47, 46, 0.08) !important;
+}
+
+#kt_aside .menu-link:hover:not(.active) .menu-title,
+.aside .menu-link:hover:not(.active) .menu-title {
+    color: #262F2E !important;
+}
+
+/* === ACTIVE STATE === */
+#kt_aside .menu-link.active,
+.aside .menu-link.active {
+    background-color: #262F2E !important;
+}
+
+#kt_aside .menu-link.active .menu-title,
+.aside .menu-link.active .menu-title {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+#kt_aside .menu-link.active .menu-icon i,
+#kt_aside .menu-link.active .menu-icon i span,
+.aside .menu-link.active .menu-icon i,
+.aside .menu-link.active .menu-icon i span {
+    color: #FFFFFF !important;
+}
+
+/* Active dot */
+#kt_aside .menu-link.active::after,
+.aside .menu-link.active::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--brand-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--brand-gold-glow);
+}
+
+/* === HOVER STATE === */
+#kt_aside .menu-link:hover:not(.active),
+.aside .menu-link:hover:not(.active) {
+    background-color: var(--surface-3) !important;
+}
+
+#kt_aside .menu-link:hover:not(.active) .menu-title,
+.aside .menu-link:hover:not(.active) .menu-title {
+    color: var(--brand-dark) !important;
+}
+
+[data-bs-theme="dark"] #kt_aside .menu-link:hover:not(.active) .menu-title,
+[data-bs-theme="dark"] .aside .menu-link:hover:not(.active) .menu-title {
+    color: var(--text-primary) !important;
+}
+
+#kt_aside .menu-link:hover:not(.active) .menu-icon i,
+#kt_aside .menu-link:hover:not(.active) .menu-icon i span,
+.aside .menu-link:hover:not(.active) .menu-icon i,
+.aside .menu-link:hover:not(.active) .menu-icon i span {
+    color: var(--brand-gold) !important;
+}
+
+/* === DEFAULT ICON & TITLE === */
+#kt_aside .menu-icon i,
+#kt_aside .menu-icon i span,
+.aside .menu-icon i,
+.aside .menu-icon i span {
+    color: var(--text-muted) !important;
+    transition: color var(--t) !important;
+}
+
+#kt_aside .menu-title,
+.aside .menu-title {
+    color: var(--text-secondary) !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    transition: color var(--t) !important;
+}
+
+/* === SECTION HEADING === */
+#kt_aside .menu-heading,
+.aside .menu-heading {
+    color: var(--brand-muted) !important;
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    padding: 20px 14px 6px !important;
+    opacity: 0.75;
+}
+
+/* === SIDEBAR FOOTER === */
+#kt_aside_footer .btn,
+.aside-footer .btn {
+    background-color: var(--surface-2) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text-secondary) !important;
+    border-radius: var(--r-md) !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    transition: all var(--t) !important;
+}
+
+#kt_aside_footer .btn:hover,
+.aside-footer .btn:hover {
+    background-color: var(--brand-gold-soft) !important;
+    border-color: var(--brand-gold) !important;
+    color: var(--brand-dark) !important;
+}
+
+/* Sidebar scrollbar */
+#kt_aside ::-webkit-scrollbar,
+.aside ::-webkit-scrollbar {
+    width: 3px;
+}
+
+#kt_aside ::-webkit-scrollbar-thumb,
+.aside ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+/* ============================================================
+   5. CONTENT / WRAPPER
+   ============================================================ */
+.wrapper,
+#kt_wrapper {
+    background-color: var(--bg) !important;
+}
+
+/* Toolbar */
+#kt_toolbar {
+    padding: 24px 28px 0 !important;
+}
+
+#kt_toolbar h1 {
+    color: var(--text-primary) !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+}
+
+.breadcrumb-item,
+.breadcrumb-dot .breadcrumb-item {
+    color: var(--text-muted) !important;
+    font-size: 0.78rem !important;
+}
+
+.breadcrumb-item::before {
+    color: var(--text-faint) !important;
+}
+
+/* ============================================================
+   6. CARDS — SULTAN EDITION
+   ============================================================ */
+#kt_content .card,
+.content .card {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: var(--r-lg) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: transform var(--t), box-shadow var(--t), border-color var(--t) !important;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Gold top accent line on hover */
+#kt_content .card::before,
+.content .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand-gold), var(--brand-gold-deep));
+    opacity: 0;
+    transition: opacity var(--t);
+    z-index: 1;
+}
+
+#kt_content .card:hover::before,
+.content .card:hover::before {
+    opacity: 1;
+}
+
+#kt_content .card:hover,
+.content .card:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: var(--shadow-md) !important;
+    border-color: var(--border) !important;
+}
+
+/* Card header */
+.card-header {
+    background: transparent !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    color: var(--text-primary) !important;
+}
+
+.card-header .card-title,
+.card-header h3,
+.card-title {
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+}
+
+/* Card body text */
+.card-body .text-gray-700,
+.card-body .text-gray-800,
+.card-body .text-gray-900 {
+    color: var(--text-primary) !important;
+}
+
+.card-body .text-gray-500,
+.card-body .text-gray-600 {
+    color: var(--text-secondary) !important;
+}
+
+/* Card footer */
+.card-footer {
+    background: transparent !important;
+    border-top: 1px solid var(--border-light) !important;
+}
+
+/* Card dashed (referrals stats) */
+.card-dashed {
+    border: 1.5px dashed var(--border) !important;
+    background: var(--surface) !important;
+    border-radius: var(--r-lg) !important;
+    transition: all var(--t) !important;
+}
+
+.card-dashed:hover {
+    border-style: solid !important;
+    border-color: var(--brand-gold) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+/* ============================================================
+   7. OVERVIEW STATS — BIG NUMBERS
+   ============================================================ */
+/* Stat value */
+.text-gray-700.fw-bolder {
+    color: var(--text-primary) !important;
+    font-weight: 800 !important;
+}
+
+/* Stat label */
+.text-gray-500.fw-semibold {
+    color: var(--text-muted) !important;
+}
+
+/* Large stat numbers - gradient */
+.fs-lg-2x.fw-bold,
+.fs-lg-2x.fw-bold span[data-kt-countup] {
+    background: linear-gradient(135deg, var(--brand-dark), var(--brand-gold-deep));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800 !important;
+}
+
+[data-bs-theme="dark"] .fs-lg-2x.fw-bold,
+[data-bs-theme="dark"] .fs-lg-2x.fw-bold span[data-kt-countup] {
+    background: linear-gradient(135deg, #e8ede8, var(--brand-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Notice/alert banners */
+.notice {
+    border-radius: var(--r-md) !important;
+}
+
+/* ============================================================
+   8. BUTTONS
+   ============================================================ */
+.btn-primary {
+    background: var(--brand-gold) !important;
+    border: none !important;
+    color: var(--brand-dark) !important;
+    font-weight: 600 !important;
+    border-radius: var(--r-sm) !important;
+    transition: all var(--t) !important;
+    letter-spacing: 0.01em;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: #e8a94a !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-gold) !important;
+    color: var(--brand-dark) !important;
+}
+
+.btn-primary:active {
+    transform: translateY(0) !important;
+}
+
+.btn-light,
+.btn-bg-light {
+    background-color: var(--surface-2) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text-secondary) !important;
+    border-radius: var(--r-sm) !important;
+    font-weight: 500 !important;
+    transition: all var(--t) !important;
+}
+
+.btn-light:hover,
+.btn-bg-light:hover {
+    background-color: var(--brand-gold-soft) !important;
+    border-color: var(--brand-gold) !important;
+    color: var(--brand-dark) !important;
+}
+
+.btn-success {
+    background-color: #16a34a !important;
+    border-color: #16a34a !important;
+    font-weight: 600 !important;
+    border-radius: var(--r-sm) !important;
+}
+
+.btn-light-primary {
+    background-color: var(--brand-gold-soft) !important;
+    color: var(--brand-muted) !important;
+    border-radius: var(--r-sm) !important;
+    font-weight: 500 !important;
+    transition: all var(--t) !important;
+}
+
+.btn-light-primary:hover {
+    background-color: var(--brand-gold-glow) !important;
+    color: var(--brand-dark) !important;
+}
+
+/* ============================================================
+   9. FORMS
+   ============================================================ */
+.form-control,
+.form-control-solid {
+    background-color: var(--surface-2) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--r-sm) !important;
+    color: var(--text-primary) !important;
+    font-size: 0.9rem !important;
+    transition: border-color var(--t), box-shadow var(--t), background-color var(--t) !important;
+}
+
+.form-control:focus,
+.form-control-solid:focus {
+    background-color: var(--surface) !important;
+    border-color: var(--brand-gold) !important;
+    box-shadow: 0 0 0 3px var(--brand-gold-soft) !important;
+    color: var(--text-primary) !important;
+    outline: none !important;
+}
+
+.form-control::placeholder {
+    color: var(--text-faint) !important;
+}
+
+label,
+.form-label,
+.col-form-label {
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+}
+
+.form-text,
+.fs-7.fw-semibold.text-muted {
+    color: var(--text-muted) !important;
+    font-size: 0.8rem !important;
+}
+
+/* ============================================================
+   10. TABLES
+   ============================================================ */
+.table {
+    color: var(--text-primary) !important;
+}
+
+.table thead tr th {
+    color: var(--text-muted) !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    border-bottom: 1px solid var(--border) !important;
+    padding-bottom: 12px !important;
+}
+
+.table-row-dashed tbody tr {
+    border-bottom: 1px solid var(--border-light) !important;
+    transition: background-color var(--t) !important;
+}
+
+.table-row-dashed tbody tr:hover {
+    background-color: var(--brand-gold-soft) !important;
+}
+
+.table td {
+    color: var(--text-secondary) !important;
+    vertical-align: middle !important;
+}
+
+/* ============================================================
+   11. BADGES
+   ============================================================ */
+.badge {
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    font-size: 0.72rem !important;
+    padding: 4px 8px !important;
+}
+
+.badge-warning, .badge-light-warning {
+    background-color: rgba(245, 158, 11, 0.1) !important;
+    color: #b45309 !important;
+}
+
+.badge-success, .badge-light-success {
+    background-color: rgba(22, 163, 74, 0.1) !important;
+    color: #15803d !important;
+}
+
+[data-bs-theme="dark"] .badge-success,
+[data-bs-theme="dark"] .badge-light-success {
+    background-color: rgba(22, 163, 74, 0.15) !important;
+    color: #4ade80 !important;
+}
+
+.badge-danger, .badge-light-danger {
+    background-color: rgba(220, 38, 38, 0.1) !important;
+    color: #b91c1c !important;
+}
+
+.badge-primary, .badge-light-primary {
+    background-color: var(--brand-gold-soft) !important;
+    color: var(--brand-gold-deep) !important;
+}
+
+/* ============================================================
+   12. SEPARATORS & MISC
+   ============================================================ */
+.separator,
+.separator-dashed {
+    border-color: var(--border-light) !important;
+}
+
+/* Ribbon (invoice status) */
+.ribbon-label {
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.03em !important;
+}
+
+/* Symbol (user avatar circle) */
+.symbol-label {
+    background-color: var(--surface-3) !important;
+}
+
+/* ============================================================
+   13. DROPDOWN MENUS
+   ============================================================ */
+.menu-sub-dropdown {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--r-md) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.menu-sub-dropdown .menu-link {
+    color: var(--text-secondary) !important;
+    border-radius: var(--r-sm) !important;
+    margin: 2px 8px !important;
+    padding: 8px 12px !important;
+    transition: all var(--t) !important;
+}
+
+.menu-sub-dropdown .menu-link:hover {
+    background-color: var(--brand-gold-soft) !important;
+    color: var(--brand-dark) !important;
+}
+
+.menu-sub-dropdown .menu-content {
+    color: var(--text-primary) !important;
+}
+
+.menu-sub-dropdown .fw-bold {
+    color: var(--text-primary) !important;
+}
+
+.menu-sub-dropdown .text-muted {
+    color: var(--text-secondary) !important;
+}
+
+.separator.my-2 {
+    border-color: var(--border-light) !important;
+}
+
+/* ============================================================
+   14. FOOTER
+   ============================================================ */
+#kt_footer {
+    background-color: transparent !important;
+    border-top: 1px solid var(--border-light) !important;
+    color: var(--text-muted) !important;
+}
+
+#kt_footer .text-muted,
+#kt_footer span {
+    color: var(--text-muted) !important;
+    font-size: 0.8rem !important;
+}
+
+/* Scroll to top button */
+#kt_scrolltop {
+    background: linear-gradient(135deg, var(--brand-gold), var(--brand-gold-deep)) !important;
+    box-shadow: var(--shadow-gold) !important;
+    border-radius: var(--r-md) !important;
+}
+
+#kt_scrolltop i {
+    color: var(--brand-dark) !important;
+}
+
+/* ============================================================
+   15. GLOBAL DARK MODE TEXT OVERRIDES
+   ============================================================ */
+[data-bs-theme="dark"] .card {
+    background-color: var(--surface) !important;
+    border-color: var(--border) !important;
+}
+
+[data-bs-theme="dark"] #kt_header {
+    background-color: var(--surface) !important;
+    border-bottom-color: var(--border) !important;
+}
+
+[data-bs-theme="dark"] #kt_aside,
+[data-bs-theme="dark"] .aside {
+    background-color: var(--sidebar-bg) !important;
+    border-right-color: var(--sidebar-border) !important;
+}
+
+[data-bs-theme="dark"] .text-gray-700,
+[data-bs-theme="dark"] .text-gray-800,
+[data-bs-theme="dark"] .text-gray-900 {
+    color: var(--text-primary) !important;
+}
+
+[data-bs-theme="dark"] .text-gray-400,
+[data-bs-theme="dark"] .text-gray-500,
+[data-bs-theme="dark"] .text-gray-600 {
+    color: var(--text-secondary) !important;
+}
+
+[data-bs-theme="dark"] .form-control,
+[data-bs-theme="dark"] .form-control-solid {
+    background-color: var(--surface-2) !important;
+    border-color: var(--border) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-bs-theme="dark"] .bg-light-warning {
+    background-color: rgba(245, 158, 11, 0.1) !important;
+}
+
+[data-bs-theme="dark"] .bg-light-danger {
+    background-color: rgba(220, 38, 38, 0.1) !important;
+}
+
+[data-bs-theme="dark"] .btn-light,
+[data-bs-theme="dark"] .btn-bg-light {
+    background-color: var(--surface-2) !important;
+    border-color: var(--border) !important;
+    color: var(--text-secondary) !important;
+}
+
+[data-bs-theme="dark"] .menu-sub-dropdown {
+    background-color: var(--surface) !important;
+    border-color: var(--border) !important;
+}
+
+/* ============================================================
+   16. RESPONSIVE
+   ============================================================ */
+@media (max-width: 991.98px) {
+    #kt_aside,
+    .aside {
+        box-shadow: var(--shadow-lg) !important;
+    }
+
+    #kt_toolbar {
+        padding: 16px 16px 0 !important;
+    }
+
+    /* Push konten naik biar tidak ketutup bottom nav */
+    #kt_wrapper,
+    .wrapper {
+        padding-bottom: 72px !important;
+    }
+
+    /* Sembunyikan hamburger asli dari topbar — diganti bottom nav */
+    #kt_header #kt_aside_toggle {
+        display: none !important;
+    }
+}
+
+/* ============================================================
+   18. MOBILE BOTTOM NAVIGATION BAR
+   ============================================================ */
+
+/* Nav container */
+.wds-mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1050;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: stretch;
+    height: 64px;
+    padding-bottom: env(safe-area-inset-bottom, 0px); /* iPhone notch */
+    box-shadow: 0 -4px 20px rgba(38, 47, 46, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+[data-bs-theme="dark"] .wds-mobile-nav {
+    background: rgba(34, 41, 39, 0.95);
+    border-top-color: var(--border);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Nav item */
+.wds-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    text-decoration: none !important;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px 4px;
+    transition: all var(--t);
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.wds-nav-item:hover {
+    color: var(--brand-muted);
+    background: var(--brand-gold-soft);
+    text-decoration: none !important;
+}
+
+/* Active state */
+.wds-nav-item.active {
+    color: var(--brand-gold-deep) !important;
+}
+
+/* Active top indicator dot */
+.wds-nav-item.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand-gold), var(--brand-gold-deep));
+    border-radius: 0 0 4px 4px;
+}
+
+/* Icon */
+.wds-nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    transition: all var(--t);
+}
+
+.wds-nav-item.active .wds-nav-icon {
+    background: var(--brand-gold-soft);
+}
+
+.wds-nav-icon i {
+    font-size: 1.3rem;
+    color: inherit;
+    transition: color var(--t);
+}
+
+.wds-nav-item.active .wds-nav-icon i {
+    color: var(--brand-gold-deep) !important;
+}
+
+/* Label */
+.wds-nav-label {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    text-align: center;
+    transition: color var(--t);
+}
+
+.wds-nav-item.active .wds-nav-label {
+    color: var(--brand-gold-deep) !important;
+}
+
+/* ============================================================
+   17. INVITATION CARDS — PREMIUM
+   ============================================================ */
+
+/* Grid card wrapper */
+[data-wds-row="invitation"],
+[data-wds-row="invitation"] .card.h-100,
+[data-wds-row="invitation"] .card {
+    overflow: visible !important;
+    border-radius: var(--r-lg) !important;
+    border: 1px solid var(--border-light) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: all var(--t) !important;
+    position: relative !important;
+}
+
+/* Fix ribbon visibility - must be visible */
+[data-wds-row="invitation"] .ribbon,
+[data-wds-row="invitation"] .ribbon-end,
+[data-wds-row="invitation"] .ribbon-clip {
+    overflow: visible !important;
+}
+
+[data-wds-row="invitation"] .card.h-100:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--shadow-md) !important;
+    border-color: var(--brand-gold) !important;
+}
+
+/* Top accent bar on hover */
+[data-wds-row="invitation"] .card.h-100::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0; left: 0; right: 0 !important;
+    height: 3px !important;
+    background: linear-gradient(90deg, var(--brand-gold), var(--brand-gold-deep)) !important;
+    opacity: 0 !important;
+    transition: opacity var(--t) !important;
+    z-index: 2 !important;
+}
+
+[data-wds-row="invitation"] .card.h-100:hover::before {
+    opacity: 1 !important;
+}
+
+/* Card header: ribbon + title */
+[data-wds-row="invitation"] .card-header {
+    border-bottom: 1px solid var(--border-light) !important;
+    padding: 16px 20px !important;
+    background: transparent !important;
+}
+
+[data-wds-row="invitation"] .card-title {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    line-height: 1.4 !important;
+}
+
+/* Ribbon status badge */
+[data-wds-row="invitation"] .ribbon-label {
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    padding: 4px 10px !important;
+    border-radius: 0 0 0 6px !important;
+}
+
+/* Card body */
+[data-wds-row="invitation"] .card-body {
+    padding: 16px 20px !important;
+}
+
+/* Thumbnail */
+[data-wds-row="invitation"] .symbol img,
+[data-wds-row="invitation"] .symbol-70px img,
+[data-wds-row="invitation"] .symbol-md-90px img {
+    border-radius: var(--r-md) !important;
+    object-fit: cover !important;
+    box-shadow: var(--shadow-xs) !important;
+    transition: transform var(--t) !important;
+}
+
+[data-wds-row="invitation"] .card.h-100:hover .symbol img {
+    transform: scale(1.03) !important;
+}
+
+/* Info text */
+[data-wds-row="invitation"] .text-gray-700 {
+    color: var(--text-secondary) !important;
+    font-size: 0.82rem !important;
+    line-height: 1.6 !important;
+}
+
+[data-wds-row="invitation"] .text-gray-700.fw-bold {
+    color: var(--brand-muted) !important;
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+}
+
+/* Action buttons area */
+[data-wds-row="invitation"] .d-flex.flex-column.mt-5 {
+    padding-top: 4px !important;
+}
+
+/* Buka button */
+[data-wds-row="invitation"] .btn-primary {
+    background: var(--brand-dark) !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    border-radius: var(--r-sm) !important;
+    transition: all var(--t) !important;
+    letter-spacing: 0.02em !important;
+}
+
+[data-wds-row="invitation"] .btn-primary:hover {
+    background: var(--brand-muted) !important;
+    transform: none !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+}
+
+/* Edit button */
+[data-wds-row="invitation"] .btn-success {
+    background: var(--brand-muted) !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    border-radius: var(--r-sm) !important;
+    transition: all var(--t) !important;
+}
+
+[data-wds-row="invitation"] .btn-success:hover {
+    background: #3a4540 !important;
+    color: #ffffff !important;
+}
+
+/* Bagikan button - Gold branding */
+[data-wds-row="invitation"] .btn-warning {
+    background: linear-gradient(135deg, var(--brand-gold), var(--brand-gold-deep)) !important;
+    border: none !important;
+    color: var(--brand-dark) !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    border-radius: var(--r-sm) !important;
+    transition: all var(--t) !important;
+}
+
+[data-wds-row="invitation"] .btn-warning:hover {
+    background: linear-gradient(135deg, var(--brand-gold-deep), #c98f3a) !important;
+    color: var(--brand-dark) !important;
+    box-shadow: 0 3px 10px var(--brand-gold-glow) !important;
+}
+
+/* Dots menu button */
+[data-wds-row="invitation"] .btn-bg-light {
+    background: var(--surface-2) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--r-sm) !important;
+}
+
+[data-wds-row="invitation"] .btn-bg-light:hover {
+    background: var(--brand-gold-soft) !important;
+    border-color: var(--brand-gold) !important;
+}
+
+/* === DARK MODE INVITATION === */
+[data-bs-theme="dark"] [data-wds-row="invitation"] .card.h-100 {
+    background: var(--surface) !important;
+    border-color: var(--border) !important;
+}
+
+[data-bs-theme="dark"] [data-wds-row="invitation"] .card-title {
+    color: var(--text-primary) !important;
+}
+
+[data-bs-theme="dark"] [data-wds-row="invitation"] .btn-primary {
+    background: var(--surface-3) !important;
+    color: var(--text-primary) !important;
+}
+
+
+[data-bs-theme="dark"] [data-wds-row="invitation"] .btn-success {
+    background: #2e3b36 !important;
+    color: #a8d5b0 !important;
+}
+
+/* ============================================================
+   20. NEW INVITATION CARD — CLEAN REDESIGN
+   ============================================================ */
+
+/* Card wrapper */
+.wds-inv-card {
+    border-radius: var(--r-lg) !important;
+    border: 1px solid var(--border-light) !important;
+    box-shadow: var(--shadow-sm) !important;
+    background: var(--surface) !important;
+    overflow: visible !important;
+    transition: all var(--t) !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.wds-inv-card:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: var(--shadow-md) !important;
+    border-color: rgba(252, 195, 116, 0.5) !important;
+}
+
+/* ---- HEADER: title + status pill ---- */
+.wds-inv-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px 12px;
+    border-bottom: 1px solid var(--border-light);
+    gap: 10px;
+}
+
+.wds-inv-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.35;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Status pill badge */
+.wds-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.wds-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Active - green */
+.wds-status-aktif {
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+}
+.wds-status-aktif .wds-status-dot {
+    background: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+}
+
+/* Expired - amber */
+.wds-status-expired {
+    background: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+}
+.wds-status-expired .wds-status-dot { background: #f59e0b; }
+
+/* Inactive - slate */
+.wds-status-inactive {
+    background: rgba(100, 116, 139, 0.1);
+    color: #64748b;
+}
+.wds-status-inactive .wds-status-dot { background: #94a3b8; }
+
+/* Danger */
+.wds-status-danger {
+    background: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+.wds-status-danger .wds-status-dot { background: #ef4444; }
+
+/* ---- BODY: thumbnail + info + dots ---- */
+.wds-inv-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    flex: 1;
+}
+
+/* Thumbnail 1:1 */
+.wds-inv-thumb {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--surface-3);
+}
+
+.wds-inv-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform var(--t);
+}
+
+.wds-inv-card:hover .wds-inv-thumb img {
+    transform: scale(1.04);
+}
+
+/* Info list */
+.wds-inv-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 2px;
+}
+
+.wds-info-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.3;
+}
+
+.wds-info-row i {
+    color: var(--brand-muted);
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.wds-info-row span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Dots menu */
+.wds-inv-dots {
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+.wds-inv-dots .btn-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--r-sm);
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    transition: all var(--t);
+}
+
+.wds-inv-dots .btn-icon:hover {
+    background: var(--brand-gold-soft);
+    border-color: var(--brand-gold);
+    color: var(--brand-dark);
+}
+
+/* ---- ACTIONS: 3-button row ---- */
+.wds-inv-actions {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid var(--border-light);
+    margin-top: auto;
+    border-radius: 0 0 var(--r-lg) var(--r-lg);
+    overflow: hidden;
+}
+
+.wds-btn-action {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: all var(--t);
+    cursor: pointer;
+    border: none;
+    border-right: 1px solid var(--border-light);
+    letter-spacing: 0.01em;
+}
+
+.wds-btn-action:last-child {
+    border-right: none;
+}
+
+/* Buka - dark brand */
+.wds-btn-buka {
+    background: var(--brand-dark);
+    color: #ffffff !important;
+}
+.wds-btn-buka:hover {
+    background: var(--brand-muted);
+    color: #ffffff !important;
+}
+
+/* Edit - light muted */
+.wds-btn-edit {
+    background: var(--surface-2);
+    color: var(--text-secondary) !important;
+}
+.wds-btn-edit:hover {
+    background: var(--surface-3);
+    color: var(--text-primary) !important;
+}
+
+/* Bagikan - gold */
+.wds-btn-bagikan {
+    background: linear-gradient(135deg, var(--brand-gold), var(--brand-gold-deep));
+    color: var(--brand-dark) !important;
+}
+.wds-btn-bagikan:hover {
+    background: linear-gradient(135deg, var(--brand-gold-deep), #c98f3a);
+    color: var(--brand-dark) !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
+}
+
+/* ---- DARK MODE ---- */
+[data-bs-theme="dark"] .wds-inv-card {
+    background: var(--surface) !important;
+    border-color: var(--border) !important;
+}
+
+[data-bs-theme="dark"] .wds-inv-header {
+    border-bottom-color: var(--border) !important;
+}
+
+[data-bs-theme="dark"] .wds-inv-actions {
+    border-top-color: var(--border) !important;
+}
+
+[data-bs-theme="dark"] .wds-btn-action {
+    border-right-color: var(--border) !important;
+}
+
+[data-bs-theme="dark"] .wds-btn-buka {
+    background: var(--surface-3);
+    color: var(--text-primary) !important;
+}
+
+[data-bs-theme="dark"] .wds-btn-edit {
+    background: var(--surface-2);
+    color: var(--text-secondary) !important;
+}
+
+[data-bs-theme="dark"] .wds-status-aktif {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+}
+
+[data-bs-theme="dark"] .wds-inv-title {
+    color: var(--text-primary) !important;
+}
+
+/* ============================================================
+   21. AUTH / LOGIN PAGE — SULTAN EDITION
+   ============================================================ */
+
+/* Kill plugin background image & set full dark bg */
+#kt_body.auth-bg {
+    background: #262f2e !important;
+    background-image: none !important;
+    background-size: unset !important;
+    background-attachment: unset !important;
+    background-position: unset !important;
+    min-height: 100vh !important;
+}
+
+/* Root flex — full viewport */
+#kt_body.auth-bg .d-flex.flex-column.flex-root {
+    min-height: 100vh !important;
+    height: 100vh !important;
+}
+
+/* Main row wrapper — full height, stretch children */
+#kt_body.auth-bg .d-flex.flex-column-fluid.flex-lg-row,
+#kt_body.auth-bg .d-flex.flex-column.flex-column-fluid.flex-lg-row {
+    min-height: 100vh !important;
+    align-items: stretch !important;
+}
+
+/* ---- LEFT PANEL: branding ---- */
+#kt_body.auth-bg .d-flex.flex-center.w-lg-50 {
+    background: #262f2e !important;
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 60px 56px !important;
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+/* Decorative gold glow top */
+#kt_body.auth-bg .d-flex.flex-center.w-lg-50::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(252,195,116,0.10) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Decorative gold glow bottom */
+#kt_body.auth-bg .d-flex.flex-center.w-lg-50::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    right: -80px;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(252,195,116,0.07) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Inner content above decorations */
+#kt_body.auth-bg .d-flex.flex-center.flex-lg-start.flex-column {
+    z-index: 1;
+    position: relative;
+    text-align: left !important;
+}
+
+/* Site name */
+#kt_body.auth-bg .text-body.theme-light-show.fs-3qx,
+#kt_body.auth-bg .text-white.theme-dark-show.fs-3qx,
+#kt_body.auth-bg .fs-3qx {
+    color: #ffffff !important;
+    font-size: 2.8rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1.1 !important;
+}
+
+/* Gold accent bar below logo */
+#kt_body.auth-bg a.mb-6 {
+    display: inline-block !important;
+}
+
+#kt_body.auth-bg a.mb-6::after {
+    content: '';
+    display: block;
+    width: 44px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand-gold), var(--brand-gold-deep));
+    border-radius: 2px;
+    margin-top: 14px;
+}
+
+/* Tagline */
+#kt_body.auth-bg h2.text-body,
+#kt_body.auth-bg h2.text-white,
+#kt_body.auth-bg h2 {
+    color: rgba(255,255,255,0.55) !important;
+    font-size: 0.95rem !important;
+    font-weight: 400 !important;
+    line-height: 1.65 !important;
+    max-width: 360px !important;
+    margin: 0 !important;
+}
+
+/* Logo image */
+#kt_body.auth-bg .w-200px {
+    max-width: 160px !important;
+    height: auto !important;
+}
+
+/* ---- RIGHT PANEL: form area ---- */
+#kt_body.auth-bg .d-flex.flex-column-fluid.flex-lg-row-auto {
+    background: #f5f6f4 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 40px 32px !important;
+    min-height: 100vh !important;
+}
+
+/* Form card */
+#kt_body.auth-bg .bg-body.position-relative {
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 40px rgba(38, 47, 46, 0.10), 0 2px 8px rgba(38,47,46,0.05) !important;
+    border: 1px solid #e2e6e2 !important;
+    padding: 44px 40px !important;
+    width: 100% !important;
+    max-width: 440px !important;
+}
+
+/* ---- FORM CONTENT ---- */
+
+/* Heading */
+#kt_body.auth-bg h1.fw-bolder {
+    font-size: 1.6rem !important;
+    font-weight: 800 !important;
+    color: #262f2e !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.2 !important;
+}
+
+#kt_body.auth-bg .text-center.mb-10 {
+    margin-bottom: 28px !important;
+}
+
+/* Inputs */
+#kt_body.auth-bg .form-control,
+#kt_body.auth-bg .form-control.bg-transparent {
+    background: #f5f6f4 !important;
+    border: 1.5px solid #dde1dd !important;
+    border-radius: 10px !important;
+    color: #262f2e !important;
+    font-size: 0.88rem !important;
+    padding: 13px 16px !important;
+    height: auto !important;
+    transition: all 0.2s ease !important;
+}
+
+#kt_body.auth-bg .form-control:focus,
+#kt_body.auth-bg .form-control.bg-transparent:focus {
+    background: #ffffff !important;
+    border-color: var(--brand-gold) !important;
+    box-shadow: 0 0 0 3px rgba(252, 195, 116, 0.18) !important;
+    outline: none !important;
+}
+
+#kt_body.auth-bg .form-control::placeholder {
+    color: #b0bcb4 !important;
+}
+
+/* Input row spacing */
+#kt_body.auth-bg .fv-row.mb-8 { margin-bottom: 14px !important; }
+#kt_body.auth-bg .fv-row.mb-4 { margin-bottom: 14px !important; }
+
+/* Remember + forgot row */
+#kt_body.auth-bg .d-flex.flex-stack.flex-wrap {
+    margin-bottom: 24px !important;
+}
+
+#kt_body.auth-bg .form-check-label {
+    color: #485349 !important;
+    font-size: 0.83rem !important;
+}
+
+/* Links */
+#kt_body.auth-bg .link-primary {
+    color: #c98f3a !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}
+
+#kt_body.auth-bg .link-primary:hover {
+    color: var(--brand-gold) !important;
+    text-decoration: underline !important;
+}
+
+/* Submit button */
+#kt_body.auth-bg #wds_auth_submit,
+#kt_body.auth-bg .d-grid .btn-primary {
+    background: linear-gradient(135deg, #262f2e 0%, #3d4e49 100%) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    color: #ffffff !important;
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    padding: 13px 20px !important;
+    letter-spacing: 0.02em !important;
+    transition: all 0.22s ease !important;
+    box-shadow: 0 4px 14px rgba(38, 47, 46, 0.28) !important;
+    transform: none !important;
+}
+
+#kt_body.auth-bg #wds_auth_submit:hover,
+#kt_body.auth-bg .d-grid .btn-primary:hover {
+    background: linear-gradient(135deg, #fcc374 0%, #e8a94a 100%) !important;
+    color: #262f2e !important;
+    box-shadow: 0 6px 20px rgba(252, 195, 116, 0.38) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Signup text */
+#kt_body.auth-bg .text-gray-500 {
+    color: #7a8a80 !important;
+    font-size: 0.83rem !important;
+}
+
+/* Copyright */
+#kt_body.auth-bg .d-flex.flex-center .text-gray-500 {
+    color: #a8b4ac !important;
+    font-size: 0.73rem !important;
+    margin-top: 16px !important;
+}
+
+/* Dark mode toggle position */
+#kt_body.auth-bg #kt_theme_mode_toggle,
+#kt_body.auth-bg .wds-dark-mode {
+    position: absolute !important;
+    top: 16px !important;
+    right: 16px !important;
+}
+
+/* ---- DARK MODE ---- */
+[data-bs-theme="dark"] body.auth-bg,
+body.auth-bg[data-bs-theme="dark"] {
+    background: #131918 !important;
+    background-image: none !important;
+}
+
+[data-bs-theme="dark"] #kt_body.auth-bg .d-flex.flex-column-fluid.flex-lg-row-auto {
+    background: #1a201f !important;
+}
+
+[data-bs-theme="dark"] #kt_body.auth-bg .bg-body.position-relative {
+    background: #1e2725 !important;
+    border-color: #2e3834 !important;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.45) !important;
+}
+
+[data-bs-theme="dark"] #kt_body.auth-bg h1.fw-bolder {
+    color: #e8ede8 !important;
+}
+
+[data-bs-theme="dark"] #kt_body.auth-bg .form-control,
+[data-bs-theme="dark"] #kt_body.auth-bg .form-control.bg-transparent {
+    background: #252e2c !important;
+    border-color: #334038 !important;
+    color: #e0e8e2 !important;
+}
+
+[data-bs-theme="dark"] #kt_body.auth-bg .form-control:focus {
+    background: #2a3432 !important;
+    border-color: var(--brand-gold) !important;
+}
+
+[data-bs-theme="dark"] #kt_body.auth-bg .form-check-label {
+    color: #96a89e !important;
+}
+
+[data-bs-theme="dark"] #kt_body.auth-bg .text-gray-500 {
+    color: #7a8a82 !important;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 991.98px) {
+    #kt_body.auth-bg .d-flex.flex-center.w-lg-50 {
+        padding: 36px 28px !important;
+        min-height: auto !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    #kt_body.auth-bg .d-flex.flex-center.flex-lg-start.flex-column {
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    #kt_body.auth-bg a.mb-6::after {
+        margin: 10px auto 0 !important;
+    }
+
+    #kt_body.auth-bg h2 {
+        text-align: center !important;
+    }
+
+    #kt_body.auth-bg .d-flex.flex-column-fluid.flex-lg-row-auto {
+        min-height: auto !important;
+        padding: 32px 16px 48px !important;
+    }
+
+    #kt_body.auth-bg .bg-body.position-relative {
+        padding: 28px 20px !important;
+        border-radius: 16px !important;
+    }
+
+    #kt_body.auth-bg h1.fw-bolder {
+        font-size: 1.35rem !important;
+    }
+}
+
+
+/* Decorative gold circle top-left */
+#kt_body.auth-bg .d-flex.flex-center.w-lg-50::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: -120px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(252,195,116,0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Decorative gold circle bottom-right */
+#kt_body.auth-bg .d-flex.flex-center.w-lg-50::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(252,195,116,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Logo & tagline inner wrapper */
+#kt_body.auth-bg .d-flex.flex-center.flex-lg-start.flex-column {
+    z-index: 1;
+    position: relative;
+}
+
+/* Site name text */
+#kt_body.auth-bg .text-body.theme-light-show.fs-3qx,
+#kt_body.auth-bg .text-white.theme-dark-show.fs-3qx {
+    color: #ffffff !important;
+    font-size: 2.5rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.1 !important;
+}
+
+/* Gold underline accent after site name */
+#kt_body.auth-bg .mb-6::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand-gold), var(--brand-gold-deep));
+    border-radius: 2px;
+    margin-top: 12px;
+}
+
+/* Tagline */
+#kt_body.auth-bg h2.text-body,
+#kt_body.auth-bg h2.text-white {
+    color: rgba(255,255,255,0.65) !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    line-height: 1.6 !important;
+    max-width: 380px !important;
+}
+
+/* Logo image */
+#kt_body.auth-bg .w-200px {
+    max-width: 160px !important;
+    height: auto !important;
+}
+
+/* ---- RIGHT PANEL: form card ---- */
+#kt_body.auth-bg .d-flex.flex-column-fluid.flex-lg-row-auto {
+    background: #f5f6f4 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 40px 24px !important;
+    min-height: 100vh !important;
+}
+
+/* Form card */
+#kt_body.auth-bg .bg-body.position-relative {
+    background: #ffffff !important;
+    border-radius: 24px !important;
+    box-shadow: 0 20px 60px rgba(38, 47, 46, 0.10) !important;
+    border: 1px solid #e8ece8 !important;
+    padding: 48px 40px !important;
+    width: 100% !important;
+    max-width: 460px !important;
+}
+
+/* ---- FORM ELEMENTS ---- */
+
+/* Login heading */
+#kt_body.auth-bg h1.fw-bolder {
+    font-size: 1.75rem !important;
+    font-weight: 800 !important;
+    color: #262f2e !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 4px !important;
+}
+
+/* Sub text */
+#kt_body.auth-bg .text-center.mb-10 {
+    margin-bottom: 32px !important;
+}
+
+/* Input fields */
+#kt_body.auth-bg .form-control {
+    background: #f5f6f4 !important;
+    border: 1.5px solid #e2e6e2 !important;
+    border-radius: 12px !important;
+    color: #262f2e !important;
+    font-size: 0.9rem !important;
+    padding: 14px 16px !important;
+    height: auto !important;
+    transition: all 0.2s ease !important;
+}
+
+#kt_body.auth-bg .form-control:focus {
+    background: #ffffff !important;
+    border-color: var(--brand-gold) !important;
+    box-shadow: 0 0 0 4px rgba(252, 195, 116, 0.15) !important;
+    outline: none !important;
+}
+
+#kt_body.auth-bg .form-control::placeholder {
+    color: #a8b4ac !important;
+}
+
+/* Row spacing */
+#kt_body.auth-bg .fv-row.mb-8 {
+    margin-bottom: 16px !important;
+}
+
+#kt_body.auth-bg .fv-row.mb-4 {
+    margin-bottom: 16px !important;
+}
+
+/* Remember me & forgot password row */
+#kt_body.auth-bg .d-flex.flex-stack {
+    margin-bottom: 28px !important;
+}
+
+#kt_body.auth-bg .form-check-label {
+    color: #485349 !important;
+    font-size: 0.85rem !important;
+}
+
+#kt_body.auth-bg .link-primary {
+    color: var(--brand-gold-deep) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+}
+
+#kt_body.auth-bg .link-primary:hover {
+    color: var(--brand-gold) !important;
+}
+
+/* Submit button */
+#kt_body.auth-bg .btn-primary,
+#kt_body.auth-bg #wds_auth_submit {
+    background: linear-gradient(135deg, #262f2e, #485349) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    padding: 14px !important;
+    letter-spacing: 0.02em !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 4px 16px rgba(38, 47, 46, 0.25) !important;
+}
+
+#kt_body.auth-bg .btn-primary:hover,
+#kt_body.auth-bg #wds_auth_submit:hover {
+    background: linear-gradient(135deg, var(--brand-gold), var(--brand-gold-deep)) !important;
+    color: #262f2e !important;
+    box-shadow: 0 4px 20px rgba(252, 195, 116, 0.35) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Sign up link row */
+#kt_body.auth-bg .text-gray-500 {
+    color: #7a8a80 !important;
+    font-size: 0.85rem !important;
+}
+
+/* Copyright */
+#kt_body.auth-bg .text-gray-500.fw-semibold.fs-6 {
+    color: #a8b4ac !important;
+    font-size: 0.75rem !important;
+}
+
+/* Dark mode toggle button on form */
+#kt_body.auth-bg #kt_theme_mode_toggle {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+}
+
+/* ---- DARK MODE AUTH ---- */
+[data-bs-theme="dark"] #kt_body.auth-bg,
+#kt_body.auth-bg [data-bs-theme="dark"] {
+    background: #13161a !important;
+}
+
+[data-bs-theme="dark"] #kt_body.auth-bg .d-flex.flex-column-fluid.flex-lg-row-auto,
+#kt_body[data-bs-theme="dark"].auth-bg .d-flex.flex-column-fluid.flex-lg-row-auto {
+    background: #1a1f1e !important;
+}
+
+[data-bs-theme="dark"] #kt_body.auth-bg .bg-body.position-relative {
+    background: #222927 !important;
+    border-color: #354038 !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4) !important;
+}
+
+[data-bs-theme="dark"] #kt_body.auth-bg h1.fw-bolder {
+    color: #e8ede8 !important;
+}
+
+[data-bs-theme="dark"] #kt_body.auth-bg .form-control {
+    background: #2a3130 !important;
+    border-color: #354038 !important;
+    color: #e8ede8 !important;
+}
+
+[data-bs-theme="dark"] #kt_body.auth-bg .form-control:focus {
+    background: #303836 !important;
+    border-color: var(--brand-gold) !important;
+}
+
+[data-bs-theme="dark"] #kt_body.auth-bg .form-check-label {
+    color: #a8b8ac !important;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 991.98px) {
+    #kt_body.auth-bg .d-flex.flex-center.w-lg-50 {
+        padding: 40px 24px !important;
+        min-height: 220px !important;
+    }
+
+    #kt_body.auth-bg .d-flex.flex-column-fluid.flex-lg-row-auto {
+        min-height: auto !important;
+        padding: 24px 16px 40px !important;
+    }
+
+    #kt_body.auth-bg .bg-body.position-relative {
+        padding: 32px 24px !important;
+        border-radius: 20px !important;
+    }
+
+    #kt_body.auth-bg h1.fw-bolder {
+        font-size: 1.4rem !important;
+    }
+}
+
+/* ============================================================
+   X. SIDEBAR & NAVBAR REDESIGN (Antigravity System)
+   ============================================================ */
+
+/* Navbar / Header Glassmorphism */
+#kt_header {
+    background: #262f2e !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+[data-bs-theme="dark"] #kt_header {
+    background: #1a1f1e !important;
+    border-bottom: none !important;
+}
+
+/* Sidebar Floating & Premium Style */
+#kt_aside {
+    background: var(--surface-2, #FFFFFF) !important;
+    border-right: 1px solid var(--border) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+/* Sidebar Menu Items */
+.aside-menu .menu-item .menu-link {
+    border-radius: 12px !important;
+    margin: 4px 12px !important;
+    padding: 10px 16px !important;
+    transition: all 0.22s ease !important;
+    color: var(--text-muted) !important;
+}
+
+/* Active & Hover State */
+.aside-menu .menu-item .menu-link.active,
+.aside-menu .menu-item .menu-link:hover {
+    background: var(--brand-gold-soft, rgba(252, 195, 116, 0.12)) !important;
+    color: var(--brand-gold, #fcc374) !important;
+    font-weight: 600 !important;
+}
+
+.aside-menu .menu-item .menu-link.active .menu-icon i,
+.aside-menu .menu-item .menu-link:hover .menu-icon i {
+    color: var(--brand-gold, #fcc374) !important;
+}
+
+/* Submenu adjustments */
+.aside-menu .menu-item .menu-sub .menu-link {
+    padding-left: 45px !important;
+}
+
+/* Dark Mode Sidebar Contrast Fix */
+[data-bs-theme="dark"] #kt_aside .menu-item .menu-link {
+    color: #A0ADA5 !important; /* Warna abu-abu terang agar kontras */
+}
+[data-bs-theme="dark"] #kt_aside .menu-item .menu-link:hover {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+[data-bs-theme="dark"] #kt_aside .menu-item .menu-link.active {
+    color: var(--brand-gold, #fcc374) !important;
+    background: var(--brand-gold-soft, rgba(252, 195, 116, 0.12)) !important;
+}
+[data-bs-theme="dark"] #kt_aside .menu-title {
+    color: #A0ADA5 !important;
+}
+[data-bs-theme="dark"] #kt_aside .menu-item.active .menu-title {
+    color: var(--brand-gold, #fcc374) !important;
+}
+[data-bs-theme="dark"] #kt_aside .menu-heading,
+[data-bs-theme="dark"] #kt_aside .menu-content,
+[data-bs-theme="dark"] #kt_aside .menu-heading *,
+[data-bs-theme="dark"] #kt_aside .menu-content * {
+    color: var(--brand-gold, #fcc374) !important; /* Ganti jadi Kuning/Emas biar terbaca */
+}
+
+/* Mobile Bottom Navigation Bar (Navbar Redesign) */
+.wds-mobile-nav {
+    background: var(--surface, #FFFFFF) !important;
+    border-top: 1px solid var(--border) !important;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05) !important;
+}
+[data-bs-theme="dark"] .wds-mobile-nav {
+    background: var(--surface, #384040) !important;
+    border-top: 1px solid var(--border) !important;
+}
+
+.wds-nav-item {
+    color: var(--text-muted) !important;
+    transition: all 0.22s ease !important;
+}
+
+/* Active State: Clean & Premium (No boxy background) */
+.wds-nav-item.active {
+    color: var(--brand-dark, #262F2E) !important;
+    background: transparent !important;
+    border-top: none !important;
+}
+
+[data-bs-theme="dark"] .wds-nav-item.active {
+    color: #FFFFFF !important;
+    background: transparent !important;
+    border-top: none !important;
+}
+
+/* Icon with soft green pill background */
+.wds-nav-item.active .wds-nav-icon {
+    background: rgba(38, 47, 46, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 4px 12px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 4px !important;
+}
+
+[data-bs-theme="dark"] .wds-nav-item.active .wds-nav-icon {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.wds-nav-item.active .wds-nav-icon i {
+    color: var(--brand-dark, #262F2E) !important;
+}
+
+[data-bs-theme="dark"] .wds-nav-item.active .wds-nav-icon i {
+    color: #FFFFFF !important;
+}
+
+.wds-nav-item.active .wds-nav-label {
+    color: var(--brand-dark, #262F2E) !important;
+    font-weight: 700 !important;
+}
+
+[data-bs-theme="dark"] .wds-nav-item.active .wds-nav-label {
+    color: #FFFFFF !important;
+}
+
+/* JetFormBuilder Premium Style */
+.modal-body .jet-fb-form-block .form-control-solid {
+    background-color: var(--bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    padding: 12px 15px !important;
+    transition: all var(--t) !important;
+}
+.modal-body .jet-fb-form-block .form-control-solid:focus {
+    background-color: var(--surface) !important;
+    border-color: #262f2e !important; /* Theme dark green */
+    box-shadow: 0 0 0 3px rgba(38, 47, 46, 0.1) !important;
+}
+.modal-body .jet-fb-form-block .form-label {
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 6px !important;
+}
+.modal-body .jet-fb-form-block .form-text {
+    font-size: 0.75rem !important;
+    color: var(--text-muted, #94a3b8) !important;
+    margin-top: 4px !important;
+}
+.modal-body .jet-fb-form-block .form-select-solid {
+    background-color: var(--bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+}
