@@ -285,8 +285,10 @@
         --wp-admin--admin-bar--position-offset: 0px
       }
     }
-
-    <div class="elementor-gallery__container"><a class="e-gallery-item elementor-gallery-item elementor-animated-content"
+  </style>
+  <!-- PERBAIKAN: salinan galeri duplikat di dalam <style> dinonaktifkan (bikin CSS & galeri rusak).
+  Salinan galeri yang asli tetap ada di bagian Our Gallery body.
+  <div style="display:none"><a class="e-gallery-item elementor-gallery-item elementor-animated-content"
     href="./Foto/3.jpeg"
     data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="23f13f1e"
     data-elementor-lightbox-title="Foto 3"><div class="e-gallery-image elementor-gallery-item__image"
@@ -366,7 +368,161 @@
     data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="23f13f1e"
     data-elementor-lightbox-title="Foto 18"><div class="e-gallery-image elementor-gallery-item__image"
     data-thumbnail="./Foto/18.jpeg"
-    data-width="720" data-height="1080" aria-label="" role="img"></div><div class="elementor-gallery-item__overlay"></div></a></div><style>transform: translate3d(0, -15px, 0) scaleY(1.05);
+    data-width="720" data-height="1080" aria-label="" role="img"></div><div class="elementor-gallery-item__overlay"></div></a></div>
+  -->
+  <style>
+    /* DIPULIHKAN: keyframes ha_* yang hilang tertimpa salinan galeri (ha_bounce, ha_fadeIn, ha_rollIn, ha_zoomIn) */
+    @-webkit-keyframes ha_bounce {
+
+      0%,
+      20%,
+      53%,
+      80%,
+      to {
+        -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+        animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+      }
+
+      40%,
+      43% {
+        -webkit-animation-timing-function: cubic-bezier(.755, .05, .855, .06);
+        animation-timing-function: cubic-bezier(.755, .05, .855, .06);
+        -webkit-transform: translate3d(0, -30px, 0) scaleY(1.1);
+        transform: translate3d(0, -30px, 0) scaleY(1.1)
+      }
+
+      70% {
+        -webkit-animation-timing-function: cubic-bezier(.755, .05, .855, .06);
+        animation-timing-function: cubic-bezier(.755, .05, .855, .06);
+        -webkit-transform: translate3d(0, -15px, 0) scaleY(1.05);
+        transform: translate3d(0, -15px, 0) scaleY(1.05)
+      }
+
+      80% {
+        -webkit-transition-timing-function: cubic-bezier(.215, .61, .355, 1);
+        transition-timing-function: cubic-bezier(.215, .61, .355, 1);
+        -webkit-transform: translate3d(0, 0, 0) scaleY(.95);
+        transform: translate3d(0, 0, 0) scaleY(.95)
+      }
+
+      90% {
+        -webkit-transform: translate3d(0, -4px, 0) scaleY(1.02);
+        transform: translate3d(0, -4px, 0) scaleY(1.02)
+      }
+    }
+
+    @keyframes ha_bounce {
+
+      0%,
+      20%,
+      53%,
+      80%,
+      to {
+        -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+        animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+      }
+
+      40%,
+      43% {
+        -webkit-animation-timing-function: cubic-bezier(.755, .05, .855, .06);
+        animation-timing-function: cubic-bezier(.755, .05, .855, .06);
+        -webkit-transform: translate3d(0, -30px, 0) scaleY(1.1);
+        transform: translate3d(0, -30px, 0) scaleY(1.1)
+      }
+
+      70% {
+        -webkit-animation-timing-function: cubic-bezier(.755, .05, .855, .06);
+        animation-timing-function: cubic-bezier(.755, .05, .855, .06);
+        -webkit-transform: translate3d(0, -15px, 0) scaleY(1.05);
+        transform: translate3d(0, -15px, 0) scaleY(1.05)
+      }
+
+      80% {
+        -webkit-transition-timing-function: cubic-bezier(.215, .61, .355, 1);
+        transition-timing-function: cubic-bezier(.215, .61, .355, 1);
+        -webkit-transform: translate3d(0, 0, 0) scaleY(.95);
+        transform: translate3d(0, 0, 0) scaleY(.95)
+      }
+
+      90% {
+        -webkit-transform: translate3d(0, -4px, 0) scaleY(1.02);
+        transform: translate3d(0, -4px, 0) scaleY(1.02)
+      }
+    }
+
+    @-webkit-keyframes ha_fadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes ha_fadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @-webkit-keyframes ha_zoomIn {
+      from {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3)
+      }
+
+      50% {
+        opacity: 1
+      }
+    }
+
+    @keyframes ha_zoomIn {
+      from {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3)
+      }
+
+      50% {
+        opacity: 1
+      }
+    }
+
+    @-webkit-keyframes ha_rollIn {
+      from {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
+        transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg)
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes ha_rollIn {
+      from {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
+        transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg)
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    transform: translate3d(0, -15px, 0) scaleY(1.05);
     -webkit-animation-timing-function: cubic-bezier(.755, .05, .855, .06);
     animation-timing-function: cubic-bezier(.755, .05, .855, .06)
     }
@@ -2852,6 +3008,210 @@
   <link rel="icon" href="KirimDigi.ico" sizes="192x192">
   <link rel="apple-touch-icon" href="KirimDigi.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <style id="sb-fallback">
+    /* Fallback foto: hanya berlaku bila script fallback menambah class sb-fallback/sb-fallback-on,
+       yaitu HANYA saat JS Elementor tidak me-render gambar. Jika Elementor normal, aturan ini diam. */
+    .elementor-gallery__container.sb-fallback {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+    }
+
+    .elementor-gallery__container.sb-fallback .e-gallery-item {
+      display: block !important;
+      position: relative !important;
+      overflow: hidden !important;
+      min-height: 220px !important;
+    }
+
+    .elementor-gallery__container.sb-fallback .e-gallery-image {
+      width: 100% !important;
+      padding-top: 150% !important;
+      display: block !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+
+    .elementor-gallery__container.sb-fallback img.sb-fb-img {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center top !important;
+      display: block !important;
+    }
+
+    /* Mempelai: ukuran & bingkai ikut desain asli (tinggi dari spacer 40vh, radius oval), tanpa min-height paksa */
+    .elementor-element-27adb4e3.sb-fallback-on,
+    .elementor-element-2b1c05b0.sb-fallback-on {
+      position: relative !important;
+      overflow: hidden !important;
+    }
+
+    .elementor-element-27adb4e3.sb-fallback-on img.sb-mempelai-img,
+    .elementor-element-2b1c05b0.sb-fallback-on img.sb-mempelai-img {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center top !important;
+      border-radius: inherit !important;
+      display: block !important;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+
+    .elementor-element-27adb4e3.sb-fallback-on img.sb-mempelai-img.sb-active,
+    .elementor-element-2b1c05b0.sb-fallback-on img.sb-mempelai-img.sb-active {
+      opacity: 1 !important;
+    }
+
+    .elementor-element-27adb4e3.sb-fallback-on .elementor-background-slideshow,
+    .elementor-element-2b1c05b0.sb-fallback-on .elementor-background-slideshow {
+      display: none !important;
+    }
+
+    /* Fallback animasi entrance */
+    .sb-fade-up {
+      animation: sbFadeUp 1s ease both !important;
+    }
+
+    @-webkit-keyframes sbFadeUp {
+      from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 40px, 0);
+        transform: translate3d(0, 40px, 0)
+      }
+
+      to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+      }
+    }
+
+    @keyframes sbFadeUp {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .reveal.sb-reveal {
+      opacity: 0;
+    }
+
+    .reveal.sb-reveal.sb-reveal-on {
+      animation: sbFadeUp 1.1s ease both !important;
+      opacity: 1;
+    }
+
+    /* Fallback lightbox galeri (Elementor lightbox mati karena chunk JS gagal dimuat) */
+    .sb-lightbox {
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: 999999 !important;
+      background: rgba(0, 0, 0, .92) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: zoom-out !important;
+    }
+
+    .sb-lightbox img {
+      max-width: 92vw !important;
+      max-height: 92vh !important;
+      object-fit: contain !important;
+      border-radius: 8px !important;
+    }
+
+    .sb-lightbox span {
+      position: absolute !important;
+      top: 14px !important;
+      right: 18px !important;
+      color: #fff !important;
+      font-size: 28px !important;
+      line-height: 1 !important;
+    }
+
+    /* Slideshow background generik (mempelai + penutup + semua container slideshow Elementor).
+       Tinggi & bingkai ikut desain asli; foto di belakang konten (z-index 0). */
+    .elementor-element.sb-fallback-on {
+      position: relative !important;
+      overflow: hidden !important;
+    }
+
+    .elementor-element.sb-fallback-on > img.sb-slideshow-img {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center center !important;
+      border-radius: inherit !important;
+      display: block !important;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+      z-index: 0 !important;
+      pointer-events: none !important;
+    }
+
+    .elementor-element.sb-fallback-on > img.sb-slideshow-img.sb-active {
+      opacity: 1 !important;
+    }
+
+    .elementor-element.sb-fallback-on > :not(img.sb-slideshow-img):not(.elementor-background-slideshow) {
+      position: relative;
+      z-index: 1;
+    }
+
+    .elementor-element.sb-fallback-on.sb-kenburns > img.sb-slideshow-img.sb-active {
+      animation: sbKenBurns 9s ease-in-out infinite alternate !important;
+    }
+
+    @-webkit-keyframes sbKenBurns {
+      from {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+      }
+      to {
+        -webkit-transform: scale(1.12);
+        transform: scale(1.12)
+      }
+    }
+
+    @keyframes sbKenBurns {
+      from { transform: scale(1) }
+      to { transform: scale(1.12) }
+    }
+
+    /* Daftar ucapan: tersembunyi sampai tombol Tampilkan Ucapan diklik */
+    .saic-wrap-comments:not(.sb-show) .saic-container-comments,
+    .saic-wrap-comments:not(.sb-show) .saic-holder {
+      display: none !important;
+    }
+
+    .sb-ucapan-toggle {
+      display: block !important;
+      margin: 12px auto 4px !important;
+      padding: 10px 24px !important;
+      font-family: 'Poppins', sans-serif !important;
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      color: #fff !important;
+      background-color: #997949 !important;
+      border: none !important;
+      border-radius: 20px !important;
+      cursor: pointer !important;
+    }
+  </style>
 </head>
 
 <body
@@ -4970,7 +5330,7 @@
                                   <div class="elementor-widget-container">
                                     <div class="elementor-button-wrapper">
                                       <a class="elementor-button" role="button" id="ck_copy_address_btn" href="#"
-                                        data-clipboard-text="Jln. Batin Galang, Gg. Bambu Kuning, Kampung Tualang, Kec. Tualang, Kab. Siak, Prov.Riau, Penerima: Suci Wulandari"
+                                        data-clipboard-text="Jln. Batin Galang, Gg. Bambu Kuning, Kampung Tualang, Kec. Tualang, Kab. Siak, Prov.Riau"
                                         style="padding: 8px 16px; font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; background-color: #997949; border-radius: 6px; color: #fff; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 2px 4px rgba(153, 121, 73, 0.2); transition: background-color 0.2s;">
                                         <i class="far fa-copy" aria-hidden="true"></i><span>Salin Alamat</span>
                                       </a>
@@ -5225,16 +5585,14 @@
               data-settings="{&quot;_animation_mobile&quot;:&quot;zoomIn&quot;}" data-widget_type="image.default">
               <div class="elementor-widget-container" style="text-align: center;">
                 <a href="https://www.instagram.com/kirimdigi" target="_blank">
-                  <img width="55" height="55" src="KirimDigi.ico" alt="KirimDigi"
-                    style="width: 55px; height: 55px; border-radius: 50%; object-fit: contain; border: 2px solid #e0cda7; background: #fff; padding: 2px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                  <img width="45" height="45" src="KirimDigi.ico" alt="KirimDigi"
+                    style="width: 45px; height: 45px; border-radius: 50%; object-fit: contain; border: 2px solid #e0cda7; background: #fff; padding: 2px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 </a>
               </div>
             </div>
             <div class="elementor-element elementor-element-f3a1a39 elementor-widget elementor-widget-text-editor"
               data-id="f3a1a39" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
               <div class="elementor-widget-container" style="text-align: center; font-family: sans-serif;">
-                <p style="color: #ebd197; font-size: 16px; font-weight: bold; margin-top: 10px; margin-bottom: 5px;">
-                  Made With 💕 KirimDigi</p>
                 <p style="color: #ffffff; font-size: 13px; font-weight: bold; margin-bottom: 2px;">Hubungi Kami Untuk :
                 </p>
                 <p style="color: #e5dec9; font-size: 11px; margin-bottom: 10px;">Aplikasi, CS AI/Chat Bot, Undangan
@@ -5254,6 +5612,12 @@
                       href="https://www.instagram.com/kirimdigi" target="_blank">
                       <span class="elementor-screen-only">Instagram</span>
                       <i aria-hidden="true" class="fab fa-instagram"></i> </a>
+                  </span>
+                  <span class="elementor-grid-item" role="listitem">
+                    <a class="elementor-icon elementor-social-icon elementor-social-icon-whatsapp elementor-animation-grow elementor-repeater-item-wa"
+                      href="https://wa.me/6281380989932" target="_blank">
+                      <span class="elementor-screen-only">WhatsApp</span>
+                      <i aria-hidden="true" class="fab fa-whatsapp"></i> </a>
                   </span>
                   <span class="elementor-grid-item" role="listitem">
                     <a class="elementor-icon elementor-social-icon elementor-social-icon- elementor-animation-grow elementor-repeater-item-039acde"
@@ -6389,6 +6753,278 @@
     integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ=="
     data-cf-beacon='{"version":"2024.11.0","token":"e976b156af73466291d2640f7a5c8199","r":1}'
     crossorigin="anonymous"></script>
+  <script>
+      /* Fallback foto (tanpa jQuery/Elementor): hanya mengisi yang KOSONG.
+         Jika Elementor me-render belakangan, fallback mundur sendiri agar tidak dobel. */
+      (function () {
+        function galleryRendered(box) {
+          return box.querySelector('.e-gallery-image[style*="background"]') || box.querySelector('.elementor-background-slideshow');
+        }
+        function fixGallery() {
+          document.querySelectorAll('.elementor-gallery__container').forEach(function (box) {
+            var hasFb = !!box.querySelector('img.sb-fb-img');
+            if (galleryRendered(box)) {
+              // Elementor sudah render -> bersihkan sisa fallback bila ada
+              if (hasFb) {
+                box.querySelectorAll('img.sb-fb-img').forEach(function (img) {
+                  var p = img.parentElement;
+                  if (p && p.style.backgroundImage) img.remove();
+                });
+                if (!box.querySelector('img.sb-fb-img')) box.classList.remove('sb-fallback');
+              }
+              return;
+            }
+            var empty = 0;
+            box.querySelectorAll('.e-gallery-image[data-thumbnail]').forEach(function (el) {
+              if (el.querySelector('img.sb-fb-img')) return;
+              var t = el.getAttribute('data-thumbnail');
+              if (t && !el.style.backgroundImage) {
+                var img = document.createElement('img');
+                img.className = 'sb-fb-img'; img.src = t; img.alt = ''; img.loading = 'lazy';
+                el.appendChild(img); empty++;
+              }
+            });
+            if (empty || hasFb) box.classList.add('sb-fallback');
+          });
+        }
+        // Slideshow background generik: SEMUA container Elementor yang punya
+        // background_slideshow_gallery (mempelai, penutup, dsb). Tanpa min-height
+        // paksa; ukuran & bingkai ikut desain asli. Foto di belakang konten.
+        function fixSlideshows() {
+          var altMap = { '27adb4e3': 'Mempelai Wanita - Suci', '2b1c05b0': 'Mempelai Pria - Bayu' };
+          document.querySelectorAll('[data-settings*="background_slideshow_gallery"]').forEach(function (box) {
+            if (box.querySelector('.elementor-background-slideshow')) {
+              // Elementor sudah render -> bersihkan sisa fallback bila ada
+              if (box.querySelector('img.sb-slideshow-img')) {
+                if (box._sbTimer) clearInterval(box._sbTimer);
+                box.querySelectorAll('img.sb-slideshow-img').forEach(function (img) { img.remove(); });
+                box.classList.remove('sb-fallback-on', 'sb-kenburns');
+              }
+              return;
+            }
+            if (box.querySelector('img.sb-slideshow-img')) return;
+            var urls = [], dur = 2500, ken = false;
+            try {
+              var s = box.getAttribute('data-settings') || '';
+              var found = s.match(/Foto\\?\/[^"\\&]+?\.jpeg/g);
+              if (found && found.length) urls = found.map(function (u) { return u.replace(/\\\//g, '/'); });
+              var dm = s.match(/slide_duration.{0,12}?(\d+)/);
+              if (dm) dur = Math.min(Math.max(parseInt(dm[1], 10) || 2500, 1500), 9000);
+              ken = /ken_burns.{0,24}?yes/.test(s);
+            } catch (e) { }
+            if (!urls.length) return;
+            var id = box.getAttribute('data-id') || '';
+            var alt = altMap[id] || 'Foto galeri';
+            box.classList.add('sb-fallback-on');
+            if (ken) box.classList.add('sb-kenburns');
+            var imgs = urls.slice(0, 2).map(function (src, i) {
+              var img = document.createElement('img');
+              img.className = 'sb-slideshow-img' + (altMap[id] ? ' sb-mempelai-img' : '') + (i === 0 ? ' sb-active' : '');
+              img.src = src; img.alt = alt; img.loading = i === 0 ? 'eager' : 'lazy';
+              img.setAttribute('aria-hidden', 'true');
+              box.appendChild(img); return img;
+            });
+            if (imgs.length > 1) {
+              var cur = 0;
+              box._sbTimer = setInterval(function () {
+                imgs[cur].classList.remove('sb-active');
+                cur = (cur + 1) % imgs.length;
+                imgs[cur].classList.add('sb-active');
+              }, dur);
+            }
+          });
+        }
+        function run() { fixGallery(); fixSlideshows(); fixAnimations(); fixLightbox(); fixBgVideo(); initUcapanToggle(); }
+        // Toggle daftar ucapan: tombol Tampilkan/Sembunyikan Ucapan di bawah Kirim.
+        // Ucapan baru yang terkirim otomatis memunculkan daftar.
+        function initUcapanToggle() {
+          var wrap = document.querySelector('.saic-wrap-comments');
+          if (!wrap) return;
+          var status = wrap.querySelector('.saic-comment-status');
+          var btn = document.getElementById('sb_ucapan_toggle');
+          if (!btn) {
+            btn = document.createElement('button');
+            btn.type = 'button';
+            btn.id = 'sb_ucapan_toggle';
+            btn.className = 'sb-ucapan-toggle';
+            btn.textContent = 'Tampilkan Ucapan';
+            if (status && status.parentNode) status.parentNode.insertBefore(btn, status.nextSibling);
+            else wrap.appendChild(btn);
+          }
+          function syncLabel() {
+            btn.textContent = wrap.classList.contains('sb-show') ? 'Sembunyikan Ucapan' : 'Tampilkan Ucapan';
+          }
+          if (!btn._sbBound) {
+            btn._sbBound = true;
+            btn.addEventListener('click', function () {
+              wrap.classList.toggle('sb-show');
+              syncLabel();
+            });
+          }
+          syncLabel();
+          if (status && !status._sbObs && 'MutationObserver' in window) {
+            status._sbObs = true;
+            new MutationObserver(function () {
+              if (status.querySelector('.saic-ajax-success')) {
+                wrap.classList.add('sb-show');
+                syncLabel();
+              }
+            }).observe(status, { childList: true, subtree: true });
+          }
+        }
+        // Fallback video background hero: Elementor tidak pernah mengisi src
+        // (modul motion-effects mati), jadi isi dari background_video_link + putar.
+        function fixBgVideo() {
+          document.querySelectorAll('.elementor-background-video-container video').forEach(function (v) {
+            if (!v.currentSrc && !v.src) {
+              var box = v.closest ? v.closest('[data-settings]') : null;
+              var src = '';
+              try {
+                var s = JSON.parse(box ? (box.getAttribute('data-settings') || '{}') : '{}');
+                src = s.background_video_link || '';
+              } catch (e) { src = ''; }
+              if (src) {
+                v.muted = true;
+                v.setAttribute('muted', 'muted');
+                v.setAttribute('playsinline', 'playsinline');
+                v.setAttribute('loop', 'loop');
+                v.preload = 'auto';
+                v.src = src;
+                try { v.load(); } catch (e) {}
+              }
+            } else if (v.paused && v.readyState >= 2) {
+              try {
+                var p = v.play();
+                if (p && p.catch) p.catch(function () {});
+              } catch (e) {}
+            }
+          });
+        }
+        // Fallback lightbox: klik foto galeri -> tampil besar.
+        // Elementor diberi kesempatan dulu; fallback hanya tampil bila dialog Elementor tak muncul.
+        function openSbLightbox(src) {
+          if (!src || document.querySelector('.sb-lightbox')) return;
+          var ov = document.createElement('div');
+          ov.className = 'sb-lightbox';
+          var img = document.createElement('img');
+          img.alt = '';
+          img.src = src;
+          var x = document.createElement('span');
+          x.textContent = '×';
+          ov.appendChild(img);
+          ov.appendChild(x);
+          ov.addEventListener('click', function () { ov.remove(); });
+          document.body.appendChild(ov);
+        }
+        // Dialog Elementor dianggap hidup hanya bila ada isi/atom berukuran (bukan cangkang kosong).
+        function elementorLightboxAlive() {
+          var d = document.querySelector('.dialog-lightbox-message');
+          if (!d) return false;
+          if (d.querySelector('img, video, iframe')) return true;
+          try {
+            var r = d.getBoundingClientRect();
+            return r.width > 60 && r.height > 60;
+          } catch (e) { return false; }
+        }
+        // PENTING: pasang di level window (capture) karena ada handler document-level
+        // Elementor yang menghentikan propagasi klik (lalu gagal membuka lightbox:
+        // chunk gallery/lightbox 404). Window capture selalu jalan lebih dulu.
+        function fixLightbox() {
+          if (window._sbLb) return;
+          window._sbLb = true;
+          window.addEventListener('click', function (ev) {
+            if (ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey) return;
+            var t = ev.target;
+            if (!t || !t.closest) return;
+            var a = t.closest('a.e-gallery-item');
+            if (!a) return;
+            if (!a.closest('.elementor-gallery__container')) return;
+            ev.preventDefault();
+            var href = a.getAttribute('href');
+            var done = false;
+            function maybeOpen() {
+              if (done) return;
+              if (elementorLightboxAlive()) { done = true; return; }
+              openSbLightbox(href);
+              done = true;
+              // bila dialog Elementor muncul belakangan, mundurkan fallback
+              setTimeout(function () {
+                if (elementorLightboxAlive()) {
+                  var ov = document.querySelector('.sb-lightbox');
+                  if (ov) ov.remove();
+                }
+              }, 2500);
+            }
+            setTimeout(maybeOpen, 600);
+            setTimeout(maybeOpen, 1400);
+          }, true);
+        }
+        // Pasang sedini mungkin (saat script dibaca, sebelum init Elementor di DCL).
+        // Fallback animasi entrance: hanya untuk elemen yang MASIH .elementor-invisible
+        // (artinya JS Elementor tidak menanganinya). Hormati _animation_delay asli.
+        var _sbT0 = Date.now();
+        var _sbIO = null;
+        function parseSettings(el) {
+          try { return JSON.parse(el.getAttribute('data-settings') || '{}'); }
+          catch (e) { return {}; }
+        }
+        function pickAnim(s) {
+          var m = (window.innerWidth < 768 && s._animation_mobile) ? s._animation_mobile : s._animation;
+          if (!m || m === 'none') return '';
+          if (m === 'fade') return 'fadeIn';
+          var known = { zoomIn: 1, fadeIn: 1, fadeInDown: 1, fadeInUp: 1, bounceIn: 1, slideInUp: 1, grow: 1 };
+          return known[m] ? m : '';
+        }
+        function playEntrance(el) {
+          if (!el.classList.contains('elementor-invisible') || el.classList.contains('animated') || el._sbAnim) return;
+          el._sbAnim = true;
+          var name = pickAnim(parseSettings(el));
+          el.classList.remove('elementor-invisible');
+          el.classList.add('animated');
+          if (el.classList.contains('animated-slow')) el.style.setProperty('animation-duration', '2.5s');
+          el.classList.add(name ? name : 'sb-fade-up');
+        }
+        function sbObserve(el, cb) {
+          if ('IntersectionObserver' in window) {
+            if (!_sbIO) _sbIO = new IntersectionObserver(function (es) {
+              es.forEach(function (e) {
+                if (e.isIntersecting) { _sbIO.unobserve(e.target); var f = e.target._sbCb; if (f) { e.target._sbCb = null; f(); } }
+              });
+            }, { threshold: 0.12 });
+            el._sbCb = cb; _sbIO.observe(el);
+          } else { cb(); }
+        }
+        function fixAnimations() {
+          var now = Date.now() - _sbT0;
+          document.querySelectorAll('.elementor-invisible').forEach(function (el) {
+            if (el.classList.contains('animated') || el._sbAnim) return;
+            var s = parseSettings(el);
+            var d = parseInt(s._animation_delay || '0', 10) || 0;
+            if (d > 15000) d = 15000;
+            if (now >= d) { playEntrance(el); }
+            else if (!el._sbTimer) {
+              el._sbTimer = setTimeout(function () { el._sbTimer = null; playEntrance(el); }, d - now + 300);
+            }
+          });
+          // .reveal: fade-up saat masuk viewport (hanya yg tampil & belum beranimasi)
+          document.querySelectorAll('.reveal').forEach(function (el) {
+            if (el.classList.contains('animated') || el.classList.contains('sb-reveal') || el.classList.contains('elementor-invisible')) return;
+            if (!el.offsetParent && el.style.position !== 'fixed') return;
+            el.classList.add('sb-reveal');
+            sbObserve(el, function () { el.classList.add('sb-reveal-on'); });
+          });
+        }
+        document.addEventListener('DOMContentLoaded', function () { run(); setTimeout(run, 2500); setTimeout(run, 5000); });
+        setTimeout(run, 2500); setTimeout(run, 5000);
+        fixLightbox();
+        // Section disembunyikan sampai tombol Buka Undangan diklik,
+        // jadi jalankan ulang fallback setelah cover terbuka.
+        (function () {
+          var b = document.getElementById('tombolbuka');
+          if (b) b.addEventListener('click', function () { setTimeout(run, 1700); setTimeout(run, 3200); });
+        })();
+      })();
+  </script>
 </body>
 
 </html>
