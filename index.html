@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id" prefix="og: https://ogp.me/ns#">
 
 <head>
@@ -3072,6 +3072,31 @@
     .elementor-element-2b1c05b0.sb-fallback-on .elementor-background-slideshow {
       display: none !important;
     }
+
+    /* PERBAIKAN kedip: foto mempelai digeser kesamping (slide), bukan fade.
+       Model "menutup": foto lama DIAM di tempat, foto baru geser masuk menutupinya.
+       Jadi tidak ada celah putih di antara foto. Bingkai oval tetap dari
+       container (overflow hidden + border-radius asli), foto di dalamnya kotak. */
+    .elementor-element.sb-fallback-on.sb-slide-left > img.sb-slideshow-img,
+    .elementor-element.sb-fallback-on.sb-slide-right > img.sb-slideshow-img {
+      opacity: 1 !important;
+      border-radius: 0 !important;
+      transition: transform 1.3s ease-in-out !important;
+      z-index: 1 !important;
+    }
+    .elementor-element.sb-fallback-on.sb-slide-left > img.sb-slideshow-img.sb-active,
+    .elementor-element.sb-fallback-on.sb-slide-right > img.sb-slideshow-img.sb-active {
+      opacity: 1 !important;
+      border-radius: 0 !important;
+      z-index: 2 !important;
+    }
+    .sb-slide-left > img.sb-slideshow-img { transform: translateX(100%) !important; }
+    .sb-slide-left > img.sb-slideshow-img.sb-active { transform: translateX(0) !important; }
+    .sb-slide-left > img.sb-slideshow-img.sb-prev { transform: translateX(0) !important; }
+    .sb-slide-right > img.sb-slideshow-img { transform: translateX(-100%) !important; }
+    .sb-slide-right > img.sb-slideshow-img.sb-active { transform: translateX(0) !important; }
+    .sb-slide-right > img.sb-slideshow-img.sb-prev { transform: translateX(0) !important; }
+    .sb-noanim { transition: none !important; }
 
     /* Fallback animasi entrance */
     .sb-fade-up {
@@ -6798,12 +6823,12 @@
               if (box.querySelector('img.sb-slideshow-img')) {
                 if (box._sbTimer) clearInterval(box._sbTimer);
                 box.querySelectorAll('img.sb-slideshow-img').forEach(function (img) { img.remove(); });
-                box.classList.remove('sb-fallback-on', 'sb-kenburns');
+                box.classList.remove('sb-fallback-on', 'sb-kenburns', 'sb-slide-left', 'sb-slide-right');
               }
               return;
             }
             if (box.querySelector('img.sb-slideshow-img')) return;
-            var urls = [], dur = 2500, ken = false;
+            var urls = [], dur = 2500, ken = false, trans = 'fade';
             try {
               var s = box.getAttribute('data-settings') || '';
               var found = s.match(/Foto\\?\/[^"\\&]+?\.jpeg/g);
@@ -6811,12 +6836,16 @@
               var dm = s.match(/slide_duration.{0,12}?(\d+)/);
               if (dm) dur = Math.min(Math.max(parseInt(dm[1], 10) || 2500, 1500), 9000);
               ken = /ken_burns.{0,24}?yes/.test(s);
+              var tm = s.match(/slide_transition.{0,12}?(slide_left|slide_right|fade)/);
+              if (tm) trans = tm[1];
             } catch (e) { }
             if (!urls.length) return;
             var id = box.getAttribute('data-id') || '';
             var alt = altMap[id] || 'Foto galeri';
+            var isSlide = (trans === 'slide_left' || trans === 'slide_right') && !ken;
             box.classList.add('sb-fallback-on');
             if (ken) box.classList.add('sb-kenburns');
+            if (isSlide) box.classList.add(trans === 'slide_left' ? 'sb-slide-left' : 'sb-slide-right');
             var imgs = urls.slice(0, 2).map(function (src, i) {
               var img = document.createElement('img');
               img.className = 'sb-slideshow-img' + (altMap[id] ? ' sb-mempelai-img' : '') + (i === 0 ? ' sb-active' : '');
@@ -6826,11 +6855,36 @@
             });
             if (imgs.length > 1) {
               var cur = 0;
-              box._sbTimer = setInterval(function () {
-                imgs[cur].classList.remove('sb-active');
-                cur = (cur + 1) % imgs.length;
-                imgs[cur].classList.add('sb-active');
-              }, dur);
+              if (isSlide) {
+                // Geser kesamping: stay selama dur, lalu geser 1.3 detik. Tidak kedip.
+                var anim = 1300;
+                var cycle = dur + anim;
+                box._sbTimer = setInterval(function () {
+                  var prev = imgs[cur];
+                  cur = (cur + 1) % imgs.length;
+                  var next = imgs[cur];
+                  next.classList.remove('sb-prev', 'sb-noanim');
+                  void next.offsetWidth;
+                  prev.classList.remove('sb-active');
+                  prev.classList.add('sb-prev');
+                  next.classList.add('sb-active');
+                  setTimeout((function (p) {
+                    return function () {
+                      // Foto lama sudah tertutup penuh -> pindahkan ke luar layar tanpa animasi
+                      p.classList.add('sb-noanim');
+                      p.classList.remove('sb-prev');
+                      void p.offsetWidth;
+                      p.classList.remove('sb-noanim');
+                    };
+                  })(prev), anim + 150);
+                }, cycle);
+              } else {
+                box._sbTimer = setInterval(function () {
+                  imgs[cur].classList.remove('sb-active');
+                  cur = (cur + 1) % imgs.length;
+                  imgs[cur].classList.add('sb-active');
+                }, dur);
+              }
             }
           });
         }
